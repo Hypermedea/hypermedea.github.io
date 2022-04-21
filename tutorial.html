@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tutorial | Hypermedea</title>
+        <meta charset="utf-8">
+        <style>
+            * {
+                font-family: sans-serif;
+            }
+
+            code {
+                font-family: monospace;
+            }
+
+            #main {
+                margin: auto;
+                width: 640px;
+            }
+
+            #main img {
+                width: 100%
+            }
+
+            #main .snippet {
+                font-family: monospace;
+                border: 1px solid black;
+                padding: 5px;
+            }
+
+            #main .aside {
+                max-width: 50%;
+                position: relative;
+                left: 640px;
+                margin-left: 10px;
+                height: 0;
+                float: left;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <div style="text-align: center;">
+                <!-- <h1>Hypermedea</h1> -->
+                <img src="https://github.com/Hypermedea/hypermedea/raw/master/img/banner.png">
+                <h2>A Framework for Web (of Things) Agents</h2>
+            </div>
+            <p>
+                Hypermedea is a framework to develop autonomous agents that are capable of navigating the Web.
+                Autonomous agents are particulary relevant as controllers on the Web of Things, e.g. in building automation systems or for industrial control.
+            </p>
+            <p>
+                Hypermedea follows the multi-agent oriented programming (MAOP) approach, which provides several abstraction layers,
+                from the embodiment of agents in an environment to their coordination via agent organizations.
+                Hypermedea provides utilities to program agents against a particular environment: the Web.
+            </p>
+            <p>
+                In MAOP, an agent perceives and acts on its environment via proxy entities called <em>Artifacts</em>.
+                Hypermedea is composed of four artifacts.
+                This tutorial introduces them one by one.
+            </p>
+            <img src="https://github.com/Hypermedea/hypermedea/raw/master/img/technical-overview.png">
+
+            <h3>Linked Data Navigation</h3>
+            <p>
+                The first action that all Web agents perform is Web navigation.
+                Hypermedea focuses on Linked Data navigation: crawled resources have an RDF representation.
+                The <em>Linked Data artifact</em> exposes an operation to dereference a URI, i.e. a GET operation (<code>get/1</code>), and keeps its RDF representation in a knowledge base.
+                The artifact also keeps track of visited resources (<code>visited/1</code>) and pending dereferencing operations.
+            </p>
+            <p>
+                The following code snippet (in the <a href="http://jason.sourceforge.net/">Jason</a> agent programming language) performs a GET operation on a known URI and prints the number of received RDF triples.
+            </p>
+            <p>
+<pre class="snippet">
++!run <- get("https://territoire.emse.fr/kg/emse/fayol") .
+
++visited(URI) <- !countTriples .
+
++!countTriples
+  <-
+  .count(rdf(S, P, O), Count) ;
+  .print("found ", Count, " triples.") .
+</pre> 
+            </p>
+            <p>
+                This first program should read as follows:
+            </p>
+            <ol>
+                <li>once the agent has the intention to run (<code>!run</code>), it calls a GET operation on the <a href="https://territoire.emse.fr/kg/emse/fayol">entry point to the Fayol Knowledge Graph</a>, an RDF dataset describing the building of Institut Fayol at Mines Saint-Étienne;</li>
+                <li>once the agent believes the resource has been visited (<code>visited(URI)</code>), it has the intention of counting triples (<code>!countTriples</code>)</li>
+                <li>once the agent has that intention, it executes a sequence of two actions: it first counts the number of RDF triples included in its belief base (<code>rdf(S, P, O)</code>) and then prints that number.</li>
+            </ol>
+            <p>
+                Jason is a Belief-Desire-Intention (BDI) agent programming framework. Beliefs are ground predicates that represent the internal state of the agent.
+                Desires are goals that the agent has in reaction to particular events (either triggered by perception or by internal actions).
+                Intentions are the association of a goal and a plan that the agent believes can be executed and achieves the goal.
+            </p>
+            <p>
+                A Jason program is a collection of rules <code>Event <- Plan</code> that associate events to possible plans.
+                Events are the addition or deletion of a belief or a goal.
+                For example, <code>+visited(URI)</code> is the addition of a belief (triggered by the Linked Data artifact) while <code>+!countTriples</code> is the addition of a goal (triggered by another plan).
+                A plan is always a sequence of actions (separated by <code>;</code>).
+                In the above program, <code>.count(...)</code> and <code>.print(...)</code> are internal actions, provided not by an artifact but by the <a href="http://jason.sourceforge.net/doc/api/jason/stdlib/package-summary.html">Jason standard library</a>.
+            </p>
+            <p>
+                The Linked Data artifact processes GET operations asynchronously: an agent can call several GET operations in parallel and wait for <code>+visited(URI)</code> events to be triggered (or pursue other goals).
+                As a result, Hypermedea agents can efficiently crawl a given Knowledge Graph, i.e. to discover their environment and the possible actions their environment affords.
+                The following program crawls any Knowledge Graph given its entry point and known vocabularies (see initial intention <code>!crawl(URI)</code>).
+            </p>
+<pre class="snippet">knownVocab("http://www.w3.org/ns/sosa/") .
+knownVocab("http://www.w3.org/ns/ssn/") .
+knownVocab("https://w3id.org/bot#") .
+knownVocab("https://www.w3.org/2019/wot/td#") .
+knownVocab("https://example.org/ontology#") .
+
++rdf(S, P, Target)[crawler_source(Anchor)] : crawling
+  <-
+  if (knownVocab(Vocab) & .substring(Vocab, P, 0)) {
+    + barrier_resource(Anchor, Target)
+  } .
+
++!crawl(URI)
+  <-
+  +crawling ;
+  visit(URI) ;
+  for (hasPart(vocabularySpace, Vocab)) {
+    visit(Vocab)
+  } .
+
+// event generated by the LinkedDataArtifact
++visited(URI) : crawling
+  <-
+  for (barrier_resource(Anchor, URI)) {
+    if (not visited(URI) | toVisit(URI)) {
+      visit(URI)
+    }
+  } ;
+  if (crawler_status(false)) {
+    -crawling
+  } .
+</pre>
+            <p>
+                In the above program, all discovered RDF triples are considered as hyperlinks pointing to other Web resources.
+                For a given triple, the agent navigates from the anchor resource to the target resource (object) only if the predicate URI matches the namespace of some known vocabulary.
+                This program may not terminate; other Jason rules could be added, e.g. to restrict link traversal to a finite number of hops.
+            </p>
+            <div class="aside">
+                <img src="img/ld-nav.png">
+            </div>
+            <p>
+                Jason is a Turing-complete programming language. Agents may execute any navigation program.
+                Yet, the event-based execution model of Jason has proven efficient compared to dedicated Linked Data crawlers such as <a href="https://linked-data-fu.github.io/">Linked-Data-Fu</a>.
+                The above program is as efficient as Linked-Data-Fu to crawl the Fayol Knowledge Graph (7,380 RDF triples contained in 290 interlinked resources).
+            </p>
+            <p>
+                More details on how to use the Linked Data artifact is given in the Javadoc of <a href="https://hypermedea.github.io/javadoc/latest/org/hypermedea/LinkedDataArtifact.html"><code>LinkedDataArtifact</code></a>.
+                See also <a href="https://github.com/Hypermedea/hypermedea/tree/master/examples/fayol">examples/fayol</a> in the Hypermedea distribution.
+            </p>
+
+            <h3>Automated Reasoning</h3>
+            <p>
+                (TODO) Spatial reasoning in Fayol and the ITm Factory.
+            </p>
+
+            <h3>Automated Planning</h3>
+            <p>
+                (TODO) Particular kind of reasoning. Must be efficient (vs. EYE).
+            </p>
+<pre class="snippet">// plan synthesized by PlannerArtifact
+plan(
+  sequence([
+    moveTo(storageRack),
+    pick(item1),
+    moveTo(workstation1),
+    place(item1)
+  ])
+) .
+
++plan(sequence(Seq)) : counter(I)
+  <-
+  !executePlan(Seq, 0) .
+    
++!executePlan(Seq, I) : .nth(I, Seq, Action)
+  <-
+    Action ;
+    !executePlan(Seq, I+1) .
+</pre>
+
+            <h3>Action</h3>
+            <p>
+                (TODO) W3C WoT standard.
+            </p>
+
+            <hr>
+
+            <p>
+                See <a href="https://www.vcharpenay.link/publications/2022-www-pd.pdf">WWW '22 demo paper</a> on Hypermedea.
+            </p>
+            <p>
+                The industrial scenario developed in this tutorial is being used in the <a href="https://ai4industry.wp.imt.fr/"><em>ai4industry</em> series of summer schools</a>.
+            </p>
+        </div>
+    </body>
+</html>
