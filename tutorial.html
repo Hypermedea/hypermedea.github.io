@@ -17,6 +17,10 @@
                 width: 100%
             }
 
+            #main table {
+                width: 100%;
+            }
+
             #main .snippet {
                 font-family: monospace;
                 border: 1px solid black;
@@ -32,7 +36,7 @@
             }
 
             #main .jason.snippet .string {
-                color: darkorange;
+                color: darkgoldenrod;
             }
 
             #main .jason.snippet .number {
@@ -44,7 +48,7 @@
             }
 
             #main .jason.snippet .variable {
-                color: cornflowerblue;
+                color: royalblue;
             }
 
             #main .jason.snippet .action {
@@ -233,9 +237,101 @@ targetEquipment(<span class="variable">Machine</span>) :-
                 Spatial reasoning can be embedded in OWL DL but correspondence requires axioms beyond rule inference.
             </p>
 
+            <h3>Action</h3>
+            <p>
+                An agent that targets a specific kind of equipment is called a <em>resource agent</em>.
+                Its main role is to execute specialized plans to control a manufacturing resource.
+                A resource agent generally has several alternative plans to execute the same manufacturing process, e.g. to autonomously recover from machine failures or to handle polymorphic control interfaces.
+                Let us start with the simplest possible agent that is programmed against the DX10 machine only.
+            </p>
+            <p>
+                The purpose of a filling machine is to fill empty containers with matter (e.g. yoghurt) stored in a tank.
+                Its high-level process is as follows:
+            </p>
+            <ol>
+                <li>bring an empty container under the tank</li>
+                <li>open the tank to fill the container</li>
+                <li>move the filled container away from the tank</li>
+            </ol>
+            <p>
+                On the DX10 filling machine, most of the process is executed locally by a Programmable Logic Controller (PLC).
+                The agent may only perform two control actions: it can change the speed of the machine's belt conveyor (to move items along a fixed axis) and it can press an emergency stop that stops PLC execution.
+                The agent may also read several state variables, e.g. the current fill level of the machine's tank.
+            </p>
+            <p>
+                The DX10 machine's interface is exposed in a standard Thing Description (TD) document.
+                The <a href="https://www.w3.org/TR/wot-thing-description/">TD model</a> is a W3C standard for the so-called <em>Web of Things</em>.
+                On the Web of Things, connected devices acting as Web servers are modeled by means of their exposed properties (that clients can read and write), the actions they can perform on the physical world (that clients can invoke) and the events they can detect (that clients can subscribe to).
+                A TD document is an RDF document. After the Linked Data artifact dereferences the DX10 machine's URI, the agent is informed of the following interface:
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Operation type</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>readProperty</code></td>
+                        <td>tankLevel</td>
+                    </tr>
+                    <tr>
+                        <td><code>readProperty</code></td>
+                        <td>stackLightStatus</td>
+                    </tr>
+                    <tr>
+                        <td><code>readProperty</code>, <code>writeProperty</code></td>
+                        <td>conveyorSpeed</td>
+                    </tr>
+                    <tr>
+                        <td><code>invokeAction</code></td>
+                        <td>pressEmergencyStop</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                All possible operations on the machine are called <em>affordances</em> and are described as Web forms (with additional schema information on the expected and returned data).
+            </p>
+<pre class="jason snippet">
+!start : targetEquipment(<span class="variable">Machine</span>)
+  <-
+  <span class="comment">// an instance of ThingArtifact is automatically created from the crawled TD document</span>
+  writeProperty(<span class="string">"conveyorSpeed"</span>, <span class="number">1</span>)[artifact_name(<span class="variable">Machine</span>)] .
+</pre>
+            <p>
+                A resource agent should also be capable of handling basic polymorphism.
+                That is, it should be able to match high-level actions that are common to all machines having the same purpose to heterogeneous low-level control variables.
+            </p>
+            <p>
+                See <a href="https://github.com/Hypermedea/hypermedea/tree/master/examples/itm-factory">examples/itm-factory</a> in the Hypermedea distribution.
+            </p>
+
             <h3>Automated Planning</h3>
             <p>
-                (TODO) Particular kind of reasoning. Must be efficient (vs. EYE).
+                The purpose of a filling machine is to fill empty containers with matter (e.g. yoghurt) stored in a tank.
+                Its high-level process is as follows:
+            </p>
+            <ol>
+                <li>bring an empty container under the tank</li>
+                <li>open the tank to fill the container</li>
+                <li>move the filled container away from the tank</li>
+            </ol>
+            <p>
+                In the ideal case, all filling machines share a single action model, such that the agent's plan library includes a single plan to control them all.
+                In reality, industrial equipment is rarely standard.
+                Heterogeneity in the physical machine configuration is reflected on its Web interface.
+            </p>
+            <p>
+                Planning also brings more flexibility against failures.
+                The agent has a generic recovery strategy that consists in synthesizing a plan before attempting to execute it.
+            </p>
+            <div class="aside">
+                <img src="img/planner-restdesc.png">
+            </div>
+            <p>
+                Automated planning could be performed by an OWL reasoner.
+                OWL DL can indeed embed a modal representation of actions, given a modality of necessity.
             </p>
 <pre class="jason snippet"><span class="comment">// plan synthesized by PlannerArtifact</span>
 plan(
@@ -253,14 +349,9 @@ plan(
     
 +!executePlan(Seq, I) : .nth(I, Seq, Action)
   <-
-    Action ;
-    !executePlan(Seq, I+1) .
+  Action ;
+  !executePlan(Seq, I+1) .
 </pre>
-
-            <h3>Action</h3>
-            <p>
-                (TODO) W3C WoT standard.
-            </p>
 
             <hr>
 
