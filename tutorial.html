@@ -347,42 +347,55 @@ targetEquipment(<span class="variable">Machine</span>) :-
                 OWL DL can indeed embed a modal representation of actions, given a modality of necessity.
                 However, planning is known to be extremely costly in terms of computer resources.
                 Instead, the planning artifact hosts a dedicated planner that accepts input in the <a href="https://planning.wiki/">Planning Domain Definition Language</a> (PDDL).
-                A comparison between the well-known <a href="https://fai.cs.uni-saarland.de/hoffmann/ff.html">Fast-Forward</a> (FF) planner and a general-purpose reasoner, <a href="http://eulersharp.sourceforge.net/">EYE</a>, reveals that FF is a hundred times faster than EYE.
-                EYE is used here instead of OWL reasoners because prior work on Web of Things systems have used it for planning.
+                A comparison on a basic <a href="https://github.com/RubenVerborgh/RESTdesc-Composition-Benchmark">Web service composition benchmark</a> shows that a well-known PDDL planner (<a href="https://fai.cs.uni-saarland.de/hoffmann/ff.html">FF</a>) is a hundred times faster than a general-purpose reasoner (<a href="http://eulersharp.sourceforge.net/">EYE</a>) for finding a plan.
+                The objective of the benchmark is to find a chain of requests of increasing length from an initial state to a given goal state.
+                (Note: EYE is used here instead of OWL reasoners because prior work on Web of Things systems have used it for planning.)
             </p>
             <p>
-                The following example shows how meta-programming features of Jason can be leveraged to integrate synthesized plans at runtime.
+                Hypermedea's planner artifact has a single operation to synthesize plans (<code>buildPlan/2</code>), as shown in the following example.
             </p>
-<pre class="jason snippet"><span class="comment">// plan synthesized by PlannerArtifact</span>
-plan(
-  sequence([
-    moveTo(storageRack),
-    pick(item1),
-    moveTo(workstation1),
-    place(item1)
-  ])
-) .
+<pre class="jason snippet">domain(domain("dx10", [
+  action("switchOn", [], true, on(dx10))
+])) .
 
-+plan(sequence(Seq)) : counter(I)
-  <-
-  !executePlan(Seq, 0) .
-    
-+!executePlan(Seq, I) : .nth(I, Seq, Action)
-  <-
-  Action ;
-  !executePlan(Seq, I+1) .
+problem(problem("start", "dx10", [off(dx10)], on(dx10))) .
+
++run : domain(<span class="variable">Domain</span>) & problem(<span class="variable">Problem</span>) <- buildPlan(<span class="variable">Domain</span>, <span class="variable">Problem</span>) .
+
+<span class="comment">// plan synthesized by PlannerArtifact</span>
++plan("start", <span class="variable">Plan</span>) <- .add_plan(<span class="variable">Plan</span>) .
 </pre>
+            <p>
+                The planner artifact exposes synthesized plans using the <code>plan/2</code> predicate, associating a goal with a sequential plan.
+                It is then up to the agent to apply an execution model to the plan.
+                The Jason language supports meta-programming, such that that the agent's plan library can be modified at runtime, as done above with <code>.add_plan/1</code>.
+                In the following example, meta-programming is used in a slightly more elaborate fashion to take into account the fact that actions may be durative.
+            </p>
+<pre class="jason snippet">
++plan(sequence(_, <span class="variable">Seq</span>)) : counter(<span class="variable">I</span>)
+  <-
+  !executePlan(<span class="variable">Seq</span>, <span class="number">0</span>) .
+    
++!executePlan(<span class="variable">Seq</span>, <span class="variable">I</span>) : .nth(<span class="variable">I</span>, <span class="variable">Seq</span>, <span class="variable">Action</span>)
+  <-
+  <span class="variable">Action</span> ;
+  !executePlan(<span class="variable">Seq</span>, <span class="variable">I</span>+<span class="number">1</span>) .
+</pre>
+            <!-- <p>
+                TODO add effect event
+            </p> -->
             <p>
                 Planning also brings more flexibility against previously unseen failures.
                 The agent may have a generic recovery strategy that consists in synthesizing a plan before attempting to execute it.
+            </p>
+            <p>
+                See the Javadoc of <code>PlannerArtifact</code> and <a href="https://github.com/Hypermedea/hypermedea/tree/master/examples/planner">examples/planner</a> in the Hypermedea distribution.
             </p>
 
             <hr>
 
             <p>
-                See <a href="https://www.vcharpenay.link/publications/2022-www-pd.pdf">WWW '22 demo paper</a> on Hypermedea.
-            </p>
-            <p>
+                The performance evaluation presented here have been published in a <a href="https://www.vcharpenay.link/publications/2022-www-pd.pdf">WWW '22 demo paper</a>.
                 The industrial scenario developed in this tutorial is being used in the <a href="https://ai4industry.wp.imt.fr/"><em>ai4industry</em> series of summer schools</a>.
             </p>
         </div>
