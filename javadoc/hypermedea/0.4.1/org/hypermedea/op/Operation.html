@@ -73,7 +73,7 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <dl class="notes">
 <dt>All Known Implementing Classes:</dt>
-<dd><code><a href="BaseOperation.html" title="class in org.hypermedea.op">BaseOperation</a></code>, <code><a href="file/DeleteFileOperation.html" title="class in org.hypermedea.op.file">DeleteFileOperation</a></code>, <code><a href="file/FileOperation.html" title="class in org.hypermedea.op.file">FileOperation</a></code>, <code><a href="http/HttpOperation.html" title="class in org.hypermedea.op.http">HttpOperation</a></code>, <code><a href="file/ReadFileOperation.html" title="class in org.hypermedea.op.file">ReadFileOperation</a></code>, <code><a href="file/WriteFileOperation.html" title="class in org.hypermedea.op.file">WriteFileOperation</a></code></dd>
+<dd><code><a href="BaseOperation.html" title="class in org.hypermedea.op">BaseOperation</a></code>, <code><a href="file/DeleteFileOperation.html" title="class in org.hypermedea.op.file">DeleteFileOperation</a></code>, <code><a href="file/FileOperation.html" title="class in org.hypermedea.op.file">FileOperation</a></code>, <code><a href="http/HttpOperation.html" title="class in org.hypermedea.op.http">HttpOperation</a></code>, <code><a href="file/ReadFileOperation.html" title="class in org.hypermedea.op.file">ReadFileOperation</a></code>, <code><a href="SynchronousOperation.html" title="class in org.hypermedea.op">SynchronousOperation</a></code>, <code><a href="file/WriteFileOperation.html" title="class in org.hypermedea.op.file">WriteFileOperation</a></code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public interface </span><span class="element-name type-name-label">Operation</span></div>
@@ -150,30 +150,47 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Return the URI of the resource targeted in the operation.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#registerResponseCallback(org.hypermedea.op.ResponseCallback)" class="member-name-link">registerResponseCallback</a><wbr>(<a href="ResponseCallback.html" title="interface in org.hypermedea.op">ResponseCallback</a>&nbsp;callback)</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#isAsync()" class="member-name-link">isAsync</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
-<div class="block">Register a callback for asynchronous responses sent by the server.</div>
+<div class="block">Return whether the operation is asynchronous, implying that a server may acknowledge a request
+ before sending any response and that the server may return an arbitrary number of responses,
+ asynchronously.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#isIdempotent()" class="member-name-link">isIdempotent</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Return whether the operation is idempotent, i.e. if it can be called repeatedly with the same effect.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#isSafe()" class="member-name-link">isSafe</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Return whether the operation is safe, i.e. if it has no side effect.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#sendRequest()" class="member-name-link">sendRequest</a>()</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#registerResponseCallback(org.hypermedea.op.ResponseCallback)" class="member-name-link">registerResponseCallback</a><wbr>(<a href="ResponseCallback.html" title="interface in org.hypermedea.op">ResponseCallback</a>&nbsp;callback)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Register a callback for asynchronous responses sent by the server.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#sendRequest()" class="member-name-link">sendRequest</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">
    Start the operation by sending a message to the server with payload.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#setPayload(jason.asSyntax.Literal)" class="member-name-link">setPayload</a><wbr>(jason.asSyntax.Literal&nbsp;payload)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
-<div class="block">Fill out the form with a payload.</div>
-</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#setPayload(java.util.Collection)" class="member-name-link">setPayload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html" title="class or interface in java.util" class="external-link">Collection</a>&lt;jason.asSyntax.Literal&gt;&nbsp;payload)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#setPayload(jason.asSyntax.Literal)" class="member-name-link">setPayload</a><wbr>(jason.asSyntax.Literal&nbsp;payload)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Fill out the form with a payload.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#unregisterResponseCallback(org.hypermedea.op.ResponseCallback)" class="member-name-link">unregisterResponseCallback</a><wbr>(<a href="ResponseCallback.html" title="interface in org.hypermedea.op">ResponseCallback</a>&nbsp;callback)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#setPayload(java.util.Collection)" class="member-name-link">setPayload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html" title="class or interface in java.util" class="external-link">Collection</a>&lt;jason.asSyntax.Literal&gt;&nbsp;payload)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Fill out the form with a payload.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#unregisterResponseCallback(org.hypermedea.op.ResponseCallback)" class="member-name-link">unregisterResponseCallback</a><wbr>(<a href="ResponseCallback.html" title="interface in org.hypermedea.op">ResponseCallback</a>&nbsp;callback)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">
    Remove a callback from the list of registered callbacks for the operation.</div>
 </div>
@@ -358,6 +375,42 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
+<section class="detail" id="isSafe()">
+<h3>isSafe</h3>
+<div class="member-signature"><span class="return-type">boolean</span>&nbsp;<span class="element-name">isSafe</span>()</div>
+<div class="block">Return whether the operation is safe, i.e. if it has no side effect.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><code>true</code> if the operation is safe, <code>false</code> otherwise</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="isIdempotent()">
+<h3>isIdempotent</h3>
+<div class="member-signature"><span class="return-type">boolean</span>&nbsp;<span class="element-name">isIdempotent</span>()</div>
+<div class="block">Return whether the operation is idempotent, i.e. if it can be called repeatedly with the same effect.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><code>true</code> if the operation is idempotent, <code>false</code> otherwise</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="isAsync()">
+<h3>isAsync</h3>
+<div class="member-signature"><span class="return-type">boolean</span>&nbsp;<span class="element-name">isAsync</span>()</div>
+<div class="block">Return whether the operation is asynchronous, implying that a server may acknowledge a request
+ before sending any response and that the server may return an arbitrary number of responses,
+ asynchronously. Conversely, if the operation is synchronous, it should end as soon as a
+ response is available.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><code>true</code> if the operation is asynchronous (WATCH), <code>false</code> otherwise</dd>
+</dl>
+</section>
+</li>
+<li>
 <section class="detail" id="sendRequest()">
 <h3>sendRequest</h3>
 <div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">sendRequest</span>()
@@ -365,9 +418,9 @@ loadScripts(document, 'script');</script>
 <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></span></div>
 <div class="block"><p>
    Start the operation by sending a message to the server with payload.
-   When the method returns, the client may assume the request was received by the server.
-   This doesn't imply that the server already responded, though.
-   To synchronously wait for a response, use <a href="#getResponse()"><code>getResponse()</code></a>.
+   When the method returns, the client may assume the request was received (and possibly
+   acknowledged by the server). This doesn't always imply that the server already responded,
+   though. To synchronously wait for a response, use <a href="#getResponse()"><code>getResponse()</code></a>.
  </p>
  <p>
    An operation is supposed to include only one request.
@@ -389,7 +442,7 @@ loadScripts(document, 'script');</script>
  If the method is called after the server responded, it immediately returns the cached response.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the unique response sent by the server</dd>
+<dd>the (last) response sent by the server</dd>
 <dt>Throws:</dt>
 <dd><code><a href="NoResponseException.html" title="class in org.hypermedea.op">NoResponseException</a></code> - if no response has been received after some timeout
  or if connection to the server was lost</dd>

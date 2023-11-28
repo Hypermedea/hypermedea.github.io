@@ -80,7 +80,7 @@ loadScripts(document, 'script');</script>
 </dl>
 <dl class="notes">
 <dt>Direct Known Subclasses:</dt>
-<dd><code><a href="file/FileOperation.html" title="class in org.hypermedea.op.file">FileOperation</a></code>, <code><a href="http/HttpOperation.html" title="class in org.hypermedea.op.http">HttpOperation</a></code></dd>
+<dd><code><a href="SynchronousOperation.html" title="class in org.hypermedea.op">SynchronousOperation</a></code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public abstract class </span><span class="element-name type-name-label">BaseOperation</span>
@@ -88,7 +88,7 @@ loadScripts(document, 'script');</script>
 implements <a href="Operation.html" title="interface in org.hypermedea.op">Operation</a></span></div>
 <div class="block">Implementation of basic operation features, including:
  <ul>
-   <li>validation of JSON payload</li>
+   <li>management of operation states</li>
    <li>management of asynchronous calls and blocking calls</li>
  </ul></div>
 </section>
@@ -190,52 +190,67 @@ implements <a href="Operation.html" title="interface in org.hypermedea.op">Opera
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Return the URI of the resource targeted in the operation.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onError()" class="member-name-link">onError</a>()</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isAsync()" class="member-name-link">isAsync</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Pass an empty value to the semaphore and notify registered callbacks of an error.</div>
+<div class="block">Note: to implement synchronous operations, use <a href="SynchronousOperation.html" title="class in org.hypermedea.op"><code>SynchronousOperation</code></a>.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isIdempotent()" class="member-name-link">isIdempotent</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Return whether the operation is idempotent, i.e. if it can be called repeatedly with the same effect.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isSafe()" class="member-name-link">isSafe</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Return whether the operation is safe, i.e. if it has no side effect.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onResponse(org.hypermedea.op.Response)" class="member-name-link">onResponse</a><wbr>(<a href="Response.html" title="interface in org.hypermedea.op">Response</a>&nbsp;r)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onError()" class="member-name-link">onError</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Pass an empty value to the semaphore and notify registered callbacks of an error.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onResponse(org.hypermedea.op.Response)" class="member-name-link">onResponse</a><wbr>(<a href="Response.html" title="interface in org.hypermedea.op">Response</a>&nbsp;r)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Pass the input response to the semaphore and notify registered callbacks.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#registerResponseCallback(org.hypermedea.op.ResponseCallback)" class="member-name-link">registerResponseCallback</a><wbr>(<a href="ResponseCallback.html" title="interface in org.hypermedea.op">ResponseCallback</a>&nbsp;callback)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#registerResponseCallback(org.hypermedea.op.ResponseCallback)" class="member-name-link">registerResponseCallback</a><wbr>(<a href="ResponseCallback.html" title="interface in org.hypermedea.op">ResponseCallback</a>&nbsp;callback)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Register a callback for asynchronous responses sent by the server.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#sendRequest()" class="member-name-link">sendRequest</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#sendRequest()" class="member-name-link">sendRequest</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Ensure that only a single request is sent.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>protected abstract void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#sendSingleRequest()" class="member-name-link">sendSingleRequest</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>protected abstract void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#sendSingleRequest()" class="member-name-link">sendSingleRequest</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Implementations are protocol binding-dependent.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPayload(jason.asSyntax.Literal)" class="member-name-link">setPayload</a><wbr>(jason.asSyntax.Literal&nbsp;p)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPayload(jason.asSyntax.Literal)" class="member-name-link">setPayload</a><wbr>(jason.asSyntax.Literal&nbsp;p)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Wrap the input term into an array and call <a href="#setPayload(java.util.Collection)"><code>setPayload(Collection)</code></a>.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPayload(java.util.Collection)" class="member-name-link">setPayload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html" title="class or interface in java.util" class="external-link">Collection</a>&lt;jason.asSyntax.Literal&gt;&nbsp;p)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPayload(java.util.Collection)" class="member-name-link">setPayload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html" title="class or interface in java.util" class="external-link">Collection</a>&lt;jason.asSyntax.Literal&gt;&nbsp;p)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Fill out the form with a payload.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setTimeout(long)" class="member-name-link">setTimeout</a><wbr>(long&nbsp;timeout)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setTimeout(long)" class="member-name-link">setTimeout</a><wbr>(long&nbsp;timeout)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Set timeout between request and (first) response.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#toString()" class="member-name-link">toString</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#unregisterResponseCallback(org.hypermedea.op.ResponseCallback)" class="member-name-link">unregisterResponseCallback</a><wbr>(<a href="ResponseCallback.html" title="interface in org.hypermedea.op">ResponseCallback</a>&nbsp;callback)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#toString()" class="member-name-link">toString</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#unregisterResponseCallback(org.hypermedea.op.ResponseCallback)" class="member-name-link">unregisterResponseCallback</a><wbr>(<a href="ResponseCallback.html" title="interface in org.hypermedea.op">ResponseCallback</a>&nbsp;callback)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">
    Remove a callback from the list of registered callbacks for the operation.</div>
 </div>
@@ -405,6 +420,47 @@ implements <a href="Operation.html" title="interface in org.hypermedea.op">Opera
 </section>
 </li>
 <li>
+<section class="detail" id="isSafe()">
+<h3>isSafe</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isSafe</span>()</div>
+<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="Operation.html#isSafe()">Operation</a></code></span></div>
+<div class="block">Return whether the operation is safe, i.e. if it has no side effect.</div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="Operation.html#isSafe()">isSafe</a></code>&nbsp;in interface&nbsp;<code><a href="Operation.html" title="interface in org.hypermedea.op">Operation</a></code></dd>
+<dt>Returns:</dt>
+<dd><code>true</code> if the operation is safe, <code>false</code> otherwise</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="isIdempotent()">
+<h3>isIdempotent</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isIdempotent</span>()</div>
+<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="Operation.html#isIdempotent()">Operation</a></code></span></div>
+<div class="block">Return whether the operation is idempotent, i.e. if it can be called repeatedly with the same effect.</div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="Operation.html#isIdempotent()">isIdempotent</a></code>&nbsp;in interface&nbsp;<code><a href="Operation.html" title="interface in org.hypermedea.op">Operation</a></code></dd>
+<dt>Returns:</dt>
+<dd><code>true</code> if the operation is idempotent, <code>false</code> otherwise</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="isAsync()">
+<h3>isAsync</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isAsync</span>()</div>
+<div class="block">Note: to implement synchronous operations, use <a href="SynchronousOperation.html" title="class in org.hypermedea.op"><code>SynchronousOperation</code></a>.</div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="Operation.html#isAsync()">isAsync</a></code>&nbsp;in interface&nbsp;<code><a href="Operation.html" title="interface in org.hypermedea.op">Operation</a></code></dd>
+<dt>Returns:</dt>
+<dd><code>true</code> if the operation is asynchronous (WATCH), <code>false</code> otherwise</dd>
+</dl>
+</section>
+</li>
+<li>
 <section class="detail" id="sendRequest()">
 <h3>sendRequest</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">sendRequest</span>()
@@ -432,7 +488,7 @@ implements <a href="Operation.html" title="interface in org.hypermedea.op">Opera
 <dt>Specified by:</dt>
 <dd><code><a href="Operation.html#getResponse()">getResponse</a></code>&nbsp;in interface&nbsp;<code><a href="Operation.html" title="interface in org.hypermedea.op">Operation</a></code></dd>
 <dt>Returns:</dt>
-<dd>the unique response sent by the server</dd>
+<dd>the (last) response sent by the server</dd>
 <dt>Throws:</dt>
 <dd><code><a href="NoResponseException.html" title="class in org.hypermedea.op">NoResponseException</a></code> - if no response has been received after some timeout
  or if connection to the server was lost</dd>

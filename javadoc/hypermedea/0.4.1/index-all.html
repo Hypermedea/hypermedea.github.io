@@ -67,7 +67,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Implementation of basic operation features, including:
  
-   validation of JSON payload
+   management of operation states
    management of asynchronous calls and blocking calls
  </div>
 </dd>
@@ -338,6 +338,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Wait synchronously for a response from the server and return it.</div>
 </dd>
+<dt><a href="org/hypermedea/op/SynchronousOperation.html#getResponse()" class="member-name-link">getResponse()</a> - Method in class org.hypermedea.op.<a href="org/hypermedea/op/SynchronousOperation.html" title="class in org.hypermedea.op">SynchronousOperation</a></dt>
+<dd>
+<div class="block">Calls <a href="org/hypermedea/op/BaseOperation.html#end()"><code>BaseOperation.end()</code></a> before returning the response.</div>
+</dd>
 <dt><a href="org/hypermedea/op/file/FileResponse.html#getStatus()" class="member-name-link">getStatus()</a> - Method in class org.hypermedea.op.file.<a href="org/hypermedea/op/file/FileResponse.html" title="class in org.hypermedea.op.file">FileResponse</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/hypermedea/op/http/HttpResponse.html#getStatus()" class="member-name-link">getStatus()</a> - Method in class org.hypermedea.op.http.<a href="org/hypermedea/op/http/HttpResponse.html" title="class in org.hypermedea.op.http">HttpResponse</a></dt>
@@ -377,9 +381,7 @@ loadScripts(document, 'script');</script>
 <dt><a href="org/hypermedea/op/http/HttpBinding.html#%3Cinit%3E()" class="member-name-link">HttpBinding()</a> - Constructor for class org.hypermedea.op.http.<a href="org/hypermedea/op/http/HttpBinding.html" title="class in org.hypermedea.op.http">HttpBinding</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/hypermedea/op/http/HttpOperation.html" class="type-name-link" title="class in org.hypermedea.op.http">HttpOperation</a> - Class in <a href="org/hypermedea/op/http/package-summary.html">org.hypermedea.op.http</a></dt>
-<dd>
-<div class="block">Wrapper for constructing and executing an HTTP request based on a given <code>ThingDescription</code>.</div>
-</dd>
+<dd>&nbsp;</dd>
 <dt><a href="org/hypermedea/op/http/HttpOperation.html#%3Cinit%3E(java.lang.String,java.util.Map)" class="member-name-link">HttpOperation(String, Map&lt;String, Object&gt;)</a> - Constructor for class org.hypermedea.op.http.<a href="org/hypermedea/op/http/HttpOperation.html" title="class in org.hypermedea.op.http">HttpOperation</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/hypermedea/op/http/HttpResponse.html" class="type-name-link" title="class in org.hypermedea.op.http">HttpResponse</a> - Class in <a href="org/hypermedea/op/http/package-summary.html">org.hypermedea.op.http</a></dt>
@@ -422,6 +424,28 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="org/hypermedea/op/InvalidFormException.html#%3Cinit%3E(java.lang.Throwable)" class="member-name-link">InvalidFormException(Throwable)</a> - Constructor for exception org.hypermedea.op.<a href="org/hypermedea/op/InvalidFormException.html" title="class in org.hypermedea.op">InvalidFormException</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="org/hypermedea/op/BaseOperation.html#isAsync()" class="member-name-link">isAsync()</a> - Method in class org.hypermedea.op.<a href="org/hypermedea/op/BaseOperation.html" title="class in org.hypermedea.op">BaseOperation</a></dt>
+<dd>
+<div class="block">Note: to implement synchronous operations, use <a href="org/hypermedea/op/SynchronousOperation.html" title="class in org.hypermedea.op"><code>SynchronousOperation</code></a>.</div>
+</dd>
+<dt><a href="org/hypermedea/op/Operation.html#isAsync()" class="member-name-link">isAsync()</a> - Method in interface org.hypermedea.op.<a href="org/hypermedea/op/Operation.html" title="interface in org.hypermedea.op">Operation</a></dt>
+<dd>
+<div class="block">Return whether the operation is asynchronous, implying that a server may acknowledge a request
+ before sending any response and that the server may return an arbitrary number of responses,
+ asynchronously.</div>
+</dd>
+<dt><a href="org/hypermedea/op/BaseOperation.html#isIdempotent()" class="member-name-link">isIdempotent()</a> - Method in class org.hypermedea.op.<a href="org/hypermedea/op/BaseOperation.html" title="class in org.hypermedea.op">BaseOperation</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/hypermedea/op/Operation.html#isIdempotent()" class="member-name-link">isIdempotent()</a> - Method in interface org.hypermedea.op.<a href="org/hypermedea/op/Operation.html" title="interface in org.hypermedea.op">Operation</a></dt>
+<dd>
+<div class="block">Return whether the operation is idempotent, i.e. if it can be called repeatedly with the same effect.</div>
+</dd>
+<dt><a href="org/hypermedea/op/BaseOperation.html#isSafe()" class="member-name-link">isSafe()</a> - Method in class org.hypermedea.op.<a href="org/hypermedea/op/BaseOperation.html" title="class in org.hypermedea.op">BaseOperation</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/hypermedea/op/Operation.html#isSafe()" class="member-name-link">isSafe()</a> - Method in interface org.hypermedea.op.<a href="org/hypermedea/op/Operation.html" title="interface in org.hypermedea.op">Operation</a></dt>
+<dd>
+<div class="block">Return whether the operation is safe, i.e. if it has no side effect.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:J">J</h2>
 <dl class="index">
@@ -711,6 +735,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="org/hypermedea/HypermedeaArtifact.html#SOURCE_FUNCTOR" class="member-name-link">SOURCE_FUNCTOR</a> - Static variable in class org.hypermedea.<a href="org/hypermedea/HypermedeaArtifact.html" title="class in org.hypermedea">HypermedeaArtifact</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/hypermedea/ct/BaseRepresentationHandler.html#supportedContentTypes" class="member-name-link">supportedContentTypes</a> - Variable in class org.hypermedea.ct.<a href="org/hypermedea/ct/BaseRepresentationHandler.html" title="class in org.hypermedea.ct">BaseRepresentationHandler</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/hypermedea/op/SynchronousOperation.html" class="type-name-link" title="class in org.hypermedea.op">SynchronousOperation</a> - Class in <a href="org/hypermedea/op/package-summary.html">org.hypermedea.op</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/hypermedea/op/SynchronousOperation.html#%3Cinit%3E(java.lang.String,java.util.Map)" class="member-name-link">SynchronousOperation(String, Map&lt;String, Object&gt;)</a> - Constructor for class org.hypermedea.op.<a href="org/hypermedea/op/SynchronousOperation.html" title="class in org.hypermedea.op">SynchronousOperation</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:T">T</h2>
