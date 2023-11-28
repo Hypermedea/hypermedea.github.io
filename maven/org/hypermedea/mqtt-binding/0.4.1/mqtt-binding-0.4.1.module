@@ -1,0 +1,69 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "org.hypermedea",
+    "module": "mqtt-binding",
+    "version": "0.4.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "mqtt-binding-0.4.1.jar",
+          "url": "mqtt-binding-0.4.1.jar",
+          "size": 9769,
+          "sha512": "04a99d5a2f8ec87e0a1a1db4006848ee67234f54750e46bd6494c4a2393ae63a88764abd2acec012c6e669fba3dd4836cd55fd5abc5079e18b66c3db8bb7bf4f",
+          "sha256": "0bfd3fcf34274e5cc957a0d311e2777ac6dc51020888cbc9711b514c4809f218",
+          "sha1": "714ce593a12ea376de1ad802dd5ba15ada7ce8ef",
+          "md5": "6c8fb4909db0d90f8edbdb785ad4d310"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.eclipse.paho",
+          "module": "org.eclipse.paho.mqttv5.client",
+          "version": {
+            "requires": "1.2.5"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "mqtt-binding-0.4.1.jar",
+          "url": "mqtt-binding-0.4.1.jar",
+          "size": 9769,
+          "sha512": "04a99d5a2f8ec87e0a1a1db4006848ee67234f54750e46bd6494c4a2393ae63a88764abd2acec012c6e669fba3dd4836cd55fd5abc5079e18b66c3db8bb7bf4f",
+          "sha256": "0bfd3fcf34274e5cc957a0d311e2777ac6dc51020888cbc9711b514c4809f218",
+          "sha1": "714ce593a12ea376de1ad802dd5ba15ada7ce8ef",
+          "md5": "6c8fb4909db0d90f8edbdb785ad4d310"
+        }
+      ]
+    }
+  ]
+}
