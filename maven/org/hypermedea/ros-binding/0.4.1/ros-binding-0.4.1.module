@@ -1,0 +1,90 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "org.hypermedea",
+    "module": "ros-binding",
+    "version": "0.4.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "ros-binding-0.4.1.jar",
+          "url": "ros-binding-0.4.1.jar",
+          "size": 21633,
+          "sha512": "fe408d0f69acbc557f337ca2c3ccfbcd39c6762290f136276165bf370816abfc983a650fbf8e8d03071c99f67a78ce93ba47afc3f1aa23c713334b044cb71492",
+          "sha256": "fdbc0eb4b6ae18627ce5cfe8fb864eaef4e624bf6da4a0e0b6c81d05f269a58b",
+          "sha1": "4b2db37a94fc09b70fd504ed8c0a9dbc54ce5bc3",
+          "md5": "3d3ff17ce45e65548e3724f88d656c91"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "edu.wpi.rail",
+          "module": "jrosbridge",
+          "version": {
+            "requires": "0.2.0"
+          }
+        },
+        {
+          "group": "org.glassfish.tyrus",
+          "module": "tyrus-client",
+          "version": {
+            "requires": "1.17"
+          }
+        },
+        {
+          "group": "org.glassfish.tyrus",
+          "module": "tyrus-container-grizzly-client",
+          "version": {
+            "requires": "1.17"
+          }
+        },
+        {
+          "group": "org.glassfish.tyrus",
+          "module": "tyrus-server",
+          "version": {
+            "requires": "1.17"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "ros-binding-0.4.1.jar",
+          "url": "ros-binding-0.4.1.jar",
+          "size": 21633,
+          "sha512": "fe408d0f69acbc557f337ca2c3ccfbcd39c6762290f136276165bf370816abfc983a650fbf8e8d03071c99f67a78ce93ba47afc3f1aa23c713334b044cb71492",
+          "sha256": "fdbc0eb4b6ae18627ce5cfe8fb864eaef4e624bf6da4a0e0b6c81d05f269a58b",
+          "sha1": "4b2db37a94fc09b70fd504ed8c0a9dbc54ce5bc3",
+          "md5": "3d3ff17ce45e65548e3724f88d656c91"
+        }
+      ]
+    }
+  ]
+}
