@@ -1,0 +1,90 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "org.hypermedea",
+    "module": "hypermedea",
+    "version": "0.4.2",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.2.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "hypermedea-0.4.2.jar",
+          "url": "hypermedea-0.4.2.jar",
+          "size": 107918,
+          "sha512": "90af7219ded6869bd78e1371b713f5ab0fed027228ecb643d41796b479e39152fc757ca5392b231d02a7e48f1c98fe71be7a85a37479702abfd33a5aed6538be",
+          "sha256": "cc76cd6b5627e8135960ccd2c8047751a00c5cb3315c93bc683ffedbe12df49a",
+          "sha1": "6d332fd7097d38250a6da319e6fffecb02bf0d9c",
+          "md5": "22ccbdd133edca17f304686bd32c7b70"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.apache.jena",
+          "module": "jena-core",
+          "version": {
+            "requires": "3.16.0"
+          }
+        },
+        {
+          "group": "org.apache.jena",
+          "module": "jena-arq",
+          "version": {
+            "requires": "3.16.0"
+          }
+        },
+        {
+          "group": "org.apache.jena",
+          "module": "jena-iri",
+          "version": {
+            "requires": "3.16.0"
+          }
+        },
+        {
+          "group": "org.apache.httpcomponents.client5",
+          "module": "httpclient5",
+          "version": {
+            "requires": "5.2.1"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "hypermedea-0.4.2.jar",
+          "url": "hypermedea-0.4.2.jar",
+          "size": 107918,
+          "sha512": "90af7219ded6869bd78e1371b713f5ab0fed027228ecb643d41796b479e39152fc757ca5392b231d02a7e48f1c98fe71be7a85a37479702abfd33a5aed6538be",
+          "sha256": "cc76cd6b5627e8135960ccd2c8047751a00c5cb3315c93bc683ffedbe12df49a",
+          "sha1": "6d332fd7097d38250a6da319e6fffecb02bf0d9c",
+          "md5": "22ccbdd133edca17f304686bd32c7b70"
+        }
+      ]
+    }
+  ]
+}
