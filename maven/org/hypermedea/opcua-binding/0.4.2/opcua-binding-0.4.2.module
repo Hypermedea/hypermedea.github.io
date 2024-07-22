@@ -1,0 +1,76 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "org.hypermedea",
+    "module": "opcua-binding",
+    "version": "0.4.2",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.5"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "opcua-binding-0.4.2.jar",
+          "url": "opcua-binding-0.4.2.jar",
+          "size": 13703,
+          "sha512": "146a5eeee286355211ca9451b49678e4637ebba628a1b3abc0483742f681e3ccfee3f382d52146d6b151e2ee512207332bc3518b71511230ea232827ef711410",
+          "sha256": "9206254711483fd3a76581f022dd46ea283f4f03e6ec6c84c764c81d6ca75cd7",
+          "sha1": "0d712151318866801628caea4449c2949c3a365c",
+          "md5": "a1ded8481f925909d7c534e195b3ac47"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.eclipse.milo",
+          "module": "sdk-client",
+          "version": {
+            "requires": "0.6.8"
+          }
+        },
+        {
+          "group": "org.apache.jena",
+          "module": "jena-core",
+          "version": {
+            "requires": "3.16.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "opcua-binding-0.4.2.jar",
+          "url": "opcua-binding-0.4.2.jar",
+          "size": 13703,
+          "sha512": "146a5eeee286355211ca9451b49678e4637ebba628a1b3abc0483742f681e3ccfee3f382d52146d6b151e2ee512207332bc3518b71511230ea232827ef711410",
+          "sha256": "9206254711483fd3a76581f022dd46ea283f4f03e6ec6c84c764c81d6ca75cd7",
+          "sha1": "0d712151318866801628caea4449c2949c3a365c",
+          "md5": "a1ded8481f925909d7c534e195b3ac47"
+        }
+      ]
+    }
+  ]
+}

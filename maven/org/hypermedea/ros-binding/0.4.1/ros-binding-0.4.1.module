@@ -27,11 +27,11 @@
         {
           "name": "ros-binding-0.4.1.jar",
           "url": "ros-binding-0.4.1.jar",
-          "size": 21633,
-          "sha512": "fe408d0f69acbc557f337ca2c3ccfbcd39c6762290f136276165bf370816abfc983a650fbf8e8d03071c99f67a78ce93ba47afc3f1aa23c713334b044cb71492",
-          "sha256": "fdbc0eb4b6ae18627ce5cfe8fb864eaef4e624bf6da4a0e0b6c81d05f269a58b",
-          "sha1": "4b2db37a94fc09b70fd504ed8c0a9dbc54ce5bc3",
-          "md5": "3d3ff17ce45e65548e3724f88d656c91"
+          "size": 21459,
+          "sha512": "f6ca4074c287bc71a00caf3cac87fa08ab1d06afbdbaf04d8ef271723a01a2c531f04c016958e5f93fad48fe40dbad3420325cb1ab464d54b750c0ee91cc875c",
+          "sha256": "b01a9c1d5fd70833b0caac199982bf299d3dfe19d935d43cd05c45f261ab8692",
+          "sha1": "0f71725f3b42163f41617dcd9d69903308c0a7f5",
+          "md5": "af7cbc8d3e4720be9e339360454dbf40"
         }
       ]
     },
@@ -78,11 +78,11 @@
         {
           "name": "ros-binding-0.4.1.jar",
           "url": "ros-binding-0.4.1.jar",
-          "size": 21633,
-          "sha512": "fe408d0f69acbc557f337ca2c3ccfbcd39c6762290f136276165bf370816abfc983a650fbf8e8d03071c99f67a78ce93ba47afc3f1aa23c713334b044cb71492",
-          "sha256": "fdbc0eb4b6ae18627ce5cfe8fb864eaef4e624bf6da4a0e0b6c81d05f269a58b",
-          "sha1": "4b2db37a94fc09b70fd504ed8c0a9dbc54ce5bc3",
-          "md5": "3d3ff17ce45e65548e3724f88d656c91"
+          "size": 21459,
+          "sha512": "f6ca4074c287bc71a00caf3cac87fa08ab1d06afbdbaf04d8ef271723a01a2c531f04c016958e5f93fad48fe40dbad3420325cb1ab464d54b750c0ee91cc875c",
+          "sha256": "b01a9c1d5fd70833b0caac199982bf299d3dfe19d935d43cd05c45f261ab8692",
+          "sha1": "0f71725f3b42163f41617dcd9d69903308c0a7f5",
+          "md5": "af7cbc8d3e4720be9e339360454dbf40"
         }
       ]
     }
