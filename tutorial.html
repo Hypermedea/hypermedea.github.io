@@ -96,7 +96,7 @@
                 The artifact also keeps track of visited resources (<code>visited/1</code>) and pending dereferencing operations.
             </p>
             <p>
-                The following code snippet (in the <a href="http://jason.sourceforge.net/">Jason</a> agent programming language) performs a GET operation on a known URI and prints the number of received RDF triples.
+                The following code snippet (in the <a href="https://jason-lang.github.io">Jason</a> agent programming language) performs a GET operation on a known URI and prints the number of received RDF triples.
             </p>
             <p>
 <pre class="jason snippet">
@@ -128,7 +128,7 @@
                 Events are the addition or deletion of a belief or a goal.
                 For example, <code>+visited(URI)</code> is the addition of a belief (triggered by the Linked Data artifact) while <code>+!countTriples</code> is the addition of a goal (triggered by another plan).
                 A plan is always a sequence of actions (separated by <code>;</code>).
-                In the above program, <code>.count(...)</code> and <code>.print(...)</code> are internal actions, provided not by an artifact but by the <a href="http://jason.sourceforge.net/doc/api/jason/stdlib/package-summary.html">Jason standard library</a>.
+                In the above program, <code>.count(...)</code> and <code>.print(...)</code> are internal actions, provided not by an artifact but by the <a href="http://jason-lang.github.io/api/jason/stdlib/package-summary.html">Jason standard library</a>.
             </p>
             <p>
                 The Linked Data artifact processes GET operations asynchronously: an agent can call several GET operations in parallel and wait for <code>+visited(URI)</code> events to be triggered (or pursue other goals).
