@@ -27,11 +27,11 @@
         {
           "name": "mqtt-binding-0.4.1.jar",
           "url": "mqtt-binding-0.4.1.jar",
-          "size": 9769,
-          "sha512": "04a99d5a2f8ec87e0a1a1db4006848ee67234f54750e46bd6494c4a2393ae63a88764abd2acec012c6e669fba3dd4836cd55fd5abc5079e18b66c3db8bb7bf4f",
-          "sha256": "0bfd3fcf34274e5cc957a0d311e2777ac6dc51020888cbc9711b514c4809f218",
-          "sha1": "714ce593a12ea376de1ad802dd5ba15ada7ce8ef",
-          "md5": "6c8fb4909db0d90f8edbdb785ad4d310"
+          "size": 9060,
+          "sha512": "5d211fe1e2877aad404e1918a8b98a0fc96495891b61904ebfc1cd877e5347e20850c5c39df786627518fa9b083597c060661a855b9bc772a644334ba4fcb0f1",
+          "sha256": "64513faed044535b5c9a8cbcf690cfbfadf530b904aeb3e3e3fd7ae63d4be6da",
+          "sha1": "13c6140f10756a2608813903ce49ec7040d7ea2b",
+          "md5": "0dcbdcb53daf2be23b6549c0811c17a6"
         }
       ]
     },
@@ -57,11 +57,11 @@
         {
           "name": "mqtt-binding-0.4.1.jar",
           "url": "mqtt-binding-0.4.1.jar",
-          "size": 9769,
-          "sha512": "04a99d5a2f8ec87e0a1a1db4006848ee67234f54750e46bd6494c4a2393ae63a88764abd2acec012c6e669fba3dd4836cd55fd5abc5079e18b66c3db8bb7bf4f",
-          "sha256": "0bfd3fcf34274e5cc957a0d311e2777ac6dc51020888cbc9711b514c4809f218",
-          "sha1": "714ce593a12ea376de1ad802dd5ba15ada7ce8ef",
-          "md5": "6c8fb4909db0d90f8edbdb785ad4d310"
+          "size": 9060,
+          "sha512": "5d211fe1e2877aad404e1918a8b98a0fc96495891b61904ebfc1cd877e5347e20850c5c39df786627518fa9b083597c060661a855b9bc772a644334ba4fcb0f1",
+          "sha256": "64513faed044535b5c9a8cbcf690cfbfadf530b904aeb3e3e3fd7ae63d4be6da",
+          "sha1": "13c6140f10756a2608813903ce49ec7040d7ea2b",
+          "md5": "0dcbdcb53daf2be23b6549c0811c17a6"
         }
       ]
     }
