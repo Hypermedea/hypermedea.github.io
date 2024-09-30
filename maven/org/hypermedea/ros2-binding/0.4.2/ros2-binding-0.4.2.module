@@ -1,0 +1,60 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "org.hypermedea",
+    "module": "ros2-binding",
+    "version": "0.4.2",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.5"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "ros2-binding-0.4.2.jar",
+          "url": "ros2-binding-0.4.2.jar",
+          "size": 19182,
+          "sha512": "4e8e3a198ff83683b4b11a942a1e4794878fa78a6dd44fb3b1cc12be4f5670617fc507525f0cee30a680496365185e46b90f6b4d97450e173310d7398d636583",
+          "sha256": "b25eeb565df7278c34c8d8ca03517d60126f392cb0ba8c200f7d0af38c54f3e9",
+          "sha1": "4a12c9d3a803b9eec016233ae78d694aa14fb1f6",
+          "md5": "d7f2543d1acfea4b06db46bb51f51d32"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "ros2-binding-0.4.2.jar",
+          "url": "ros2-binding-0.4.2.jar",
+          "size": 19182,
+          "sha512": "4e8e3a198ff83683b4b11a942a1e4794878fa78a6dd44fb3b1cc12be4f5670617fc507525f0cee30a680496365185e46b90f6b4d97450e173310d7398d636583",
+          "sha256": "b25eeb565df7278c34c8d8ca03517d60126f392cb0ba8c200f7d0af38c54f3e9",
+          "sha1": "4a12c9d3a803b9eec016233ae78d694aa14fb1f6",
+          "md5": "d7f2543d1acfea4b06db46bb51f51d32"
+        }
+      ]
+    }
+  ]
+}
