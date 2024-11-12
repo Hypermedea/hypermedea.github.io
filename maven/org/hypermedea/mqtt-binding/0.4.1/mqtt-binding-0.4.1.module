@@ -10,7 +10,7 @@
   },
   "createdBy": {
     "gradle": {
-      "version": "8.2"
+      "version": "8.2.1"
     }
   },
   "variants": [
@@ -28,10 +28,10 @@
           "name": "mqtt-binding-0.4.1.jar",
           "url": "mqtt-binding-0.4.1.jar",
           "size": 9060,
-          "sha512": "5d211fe1e2877aad404e1918a8b98a0fc96495891b61904ebfc1cd877e5347e20850c5c39df786627518fa9b083597c060661a855b9bc772a644334ba4fcb0f1",
-          "sha256": "64513faed044535b5c9a8cbcf690cfbfadf530b904aeb3e3e3fd7ae63d4be6da",
-          "sha1": "13c6140f10756a2608813903ce49ec7040d7ea2b",
-          "md5": "0dcbdcb53daf2be23b6549c0811c17a6"
+          "sha512": "872df87538eb2080f117af4200c9d05b4ab74a674e180574fdc29a192840d8f3019130a20b09164c09f6dd045386bc0089d9aac9311bb3cd0497220fd899b914",
+          "sha256": "89b1e7d369aa5ba65ab3d0f78327b3f63ced638da832e0a0bc6c8800e8382d4c",
+          "sha1": "748e969546373f3bc6db952f2a4af6d1e0339ed6",
+          "md5": "1ee8053d671bd4e64ab470aa6dcc11ed"
         }
       ]
     },
@@ -58,10 +58,10 @@
           "name": "mqtt-binding-0.4.1.jar",
           "url": "mqtt-binding-0.4.1.jar",
           "size": 9060,
-          "sha512": "5d211fe1e2877aad404e1918a8b98a0fc96495891b61904ebfc1cd877e5347e20850c5c39df786627518fa9b083597c060661a855b9bc772a644334ba4fcb0f1",
-          "sha256": "64513faed044535b5c9a8cbcf690cfbfadf530b904aeb3e3e3fd7ae63d4be6da",
-          "sha1": "13c6140f10756a2608813903ce49ec7040d7ea2b",
-          "md5": "0dcbdcb53daf2be23b6549c0811c17a6"
+          "sha512": "872df87538eb2080f117af4200c9d05b4ab74a674e180574fdc29a192840d8f3019130a20b09164c09f6dd045386bc0089d9aac9311bb3cd0497220fd899b914",
+          "sha256": "89b1e7d369aa5ba65ab3d0f78327b3f63ced638da832e0a0bc6c8800e8382d4c",
+          "sha1": "748e969546373f3bc6db952f2a4af6d1e0339ed6",
+          "md5": "1ee8053d671bd4e64ab470aa6dcc11ed"
         }
       ]
     }

@@ -28,10 +28,10 @@
           "name": "hypermedea-0.4.2.jar",
           "url": "hypermedea-0.4.2.jar",
           "size": 107918,
-          "sha512": "90af7219ded6869bd78e1371b713f5ab0fed027228ecb643d41796b479e39152fc757ca5392b231d02a7e48f1c98fe71be7a85a37479702abfd33a5aed6538be",
-          "sha256": "cc76cd6b5627e8135960ccd2c8047751a00c5cb3315c93bc683ffedbe12df49a",
-          "sha1": "6d332fd7097d38250a6da319e6fffecb02bf0d9c",
-          "md5": "22ccbdd133edca17f304686bd32c7b70"
+          "sha512": "46317d7ad745b993b2111cfd1f46d55573041ba7769f0afb8797ad5612cc06ad063d064ce8cdf0a900b4dcb20849356d2d59cbbca85430a1e2df13db4ec67e89",
+          "sha256": "22866e031bcf2cc7f0fdfa6f2b25853f600138cdb7daa65cac0c235191f490f5",
+          "sha1": "a68687770cde6331f45dd082be0b455a6910959d",
+          "md5": "dcc905b2ea779d7a4e35d03c810fce3e"
         }
       ]
     },
@@ -79,10 +79,10 @@
           "name": "hypermedea-0.4.2.jar",
           "url": "hypermedea-0.4.2.jar",
           "size": 107918,
-          "sha512": "90af7219ded6869bd78e1371b713f5ab0fed027228ecb643d41796b479e39152fc757ca5392b231d02a7e48f1c98fe71be7a85a37479702abfd33a5aed6538be",
-          "sha256": "cc76cd6b5627e8135960ccd2c8047751a00c5cb3315c93bc683ffedbe12df49a",
-          "sha1": "6d332fd7097d38250a6da319e6fffecb02bf0d9c",
-          "md5": "22ccbdd133edca17f304686bd32c7b70"
+          "sha512": "46317d7ad745b993b2111cfd1f46d55573041ba7769f0afb8797ad5612cc06ad063d064ce8cdf0a900b4dcb20849356d2d59cbbca85430a1e2df13db4ec67e89",
+          "sha256": "22866e031bcf2cc7f0fdfa6f2b25853f600138cdb7daa65cac0c235191f490f5",
+          "sha1": "a68687770cde6331f45dd082be0b455a6910959d",
+          "md5": "dcc905b2ea779d7a4e35d03c810fce3e"
         }
       ]
     }

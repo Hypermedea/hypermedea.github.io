@@ -10,7 +10,7 @@
   },
   "createdBy": {
     "gradle": {
-      "version": "8.5"
+      "version": "8.2.1"
     }
   },
   "variants": [
@@ -28,10 +28,10 @@
           "name": "ros2-binding-0.4.2.jar",
           "url": "ros2-binding-0.4.2.jar",
           "size": 19182,
-          "sha512": "4e8e3a198ff83683b4b11a942a1e4794878fa78a6dd44fb3b1cc12be4f5670617fc507525f0cee30a680496365185e46b90f6b4d97450e173310d7398d636583",
-          "sha256": "b25eeb565df7278c34c8d8ca03517d60126f392cb0ba8c200f7d0af38c54f3e9",
-          "sha1": "4a12c9d3a803b9eec016233ae78d694aa14fb1f6",
-          "md5": "d7f2543d1acfea4b06db46bb51f51d32"
+          "sha512": "6adbdbb7b33bcb64790e858484a0174b80046a43b64725ae0b18a63293965c3861190ce74228e62d3901f78173bb2d1acf5d4da712bd75b3dd5f645dc3fb0e48",
+          "sha256": "06f49eaa2d26982c60c5fae2713432ccade5438537df4dde19a284a81d3af15c",
+          "sha1": "1ea96dfca9241e7681a5743fc023693014025326",
+          "md5": "bfa05931fa64083f9fda922384eaaf10"
         }
       ]
     },
@@ -49,10 +49,10 @@
           "name": "ros2-binding-0.4.2.jar",
           "url": "ros2-binding-0.4.2.jar",
           "size": 19182,
-          "sha512": "4e8e3a198ff83683b4b11a942a1e4794878fa78a6dd44fb3b1cc12be4f5670617fc507525f0cee30a680496365185e46b90f6b4d97450e173310d7398d636583",
-          "sha256": "b25eeb565df7278c34c8d8ca03517d60126f392cb0ba8c200f7d0af38c54f3e9",
-          "sha1": "4a12c9d3a803b9eec016233ae78d694aa14fb1f6",
-          "md5": "d7f2543d1acfea4b06db46bb51f51d32"
+          "sha512": "6adbdbb7b33bcb64790e858484a0174b80046a43b64725ae0b18a63293965c3861190ce74228e62d3901f78173bb2d1acf5d4da712bd75b3dd5f645dc3fb0e48",
+          "sha256": "06f49eaa2d26982c60c5fae2713432ccade5438537df4dde19a284a81d3af15c",
+          "sha1": "1ea96dfca9241e7681a5743fc023693014025326",
+          "md5": "bfa05931fa64083f9fda922384eaaf10"
         }
       ]
     }

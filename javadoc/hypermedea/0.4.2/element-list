@@ -1,0 +1,10 @@
+h
+org.hypermedea
+org.hypermedea.ct
+org.hypermedea.ct.json
+org.hypermedea.ct.rdf
+org.hypermedea.ct.txt
+org.hypermedea.op
+org.hypermedea.op.file
+org.hypermedea.op.http
+org.hypermedea.tools
